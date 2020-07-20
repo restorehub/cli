@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import click
+
+@click.group()
+def cli():
+    pass
+
+@click.command()
+def list():
+    click.echo('List of archives')
+
+@click.command()
+@click.option('--archive', help='the archive to push')
+@click.option('--destination', help='an archive will be pushed to the destination')
+def push(archive, destination):
+    click.echo('Data snapshot {} is pushed to {}'.format(archive, destination))
+
+cli.add_command(list)
+cli.add_command(push)
+
+if __name__ == '__main__':
+    cli()
